@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Template HELLO{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('main.index') }}">HOME</a>
+        <a href="{{ url_for('main.next_stage') }}">NEXT STAGE</a>
+    </nav>
+
+    <!-- 各ページのコンテンツを挿入 -->
+    {% block content %}{% endblock %}
+
+    <!-- JavaScriptを読込 -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>
