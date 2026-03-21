@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        {% block title %}Template HELLO{% endblock %}
+        {% block title %}Simple CRUD MEMO{% endblock %}
     </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block css %}{% endblock %}
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('main.index') }}">HOME</a>
-        <a href="{{ url_for('main.next_stage') }}">NEXT STAGE</a>
-    </nav>
+    <!-- insert header -->
+    {% include 'includes/_header.html' %}
 
     <!-- 各ページのコンテンツを挿入 -->
-    {% block content %}{% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
-    <!-- JavaScriptを読込 -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- insert footer -->
+    {% include 'includes/_footer.html' %}
+
+    <!-- read JavaScript -->
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/navigation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
     {% block js %}{% endblock %}
 </body>
 </html>

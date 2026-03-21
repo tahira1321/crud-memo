@@ -1,11 +1,56 @@
 <!-- base.htmlを継承 -->
 {% extends 'base.html' %}
 
-{% block title %}HOME - Template Hello{% endblock %}
+{% block title %}メモの新規作成と一覧{% endblock %}
 
 {% block content %}
-<h1>Hello World</h1>
-<p>Flask最強の土台</p>
+
+<!-- input form area -->
+<div>
+    <form action="" method="post" id="memo-form">
+        <fieldset>
+            <legend>新規メモ入力</legend>
+            <p>
+                <label for="title">タイトル</label>
+                <input type="text" id="title" name="why_title"  placeholder="テーマ">
+            </p>
+            <p>
+                <label for="content">内容</label>
+                <textarea id="content" name="why_content" placeholder="内容"></textarea>
+            </p>
+            <p>
+                <input type="date" name="create_date">
+            </p>
+            <p>
+                <button type="button" id="cancelBtn" class="btn">キャンセル</button>
+                <button type="submit">確定</button>
+            </p>
+        </fieldset>
+    </form>
+</div>
+
+<!-- desplay all -->
+<h1>メモ一覧</h1>
+<section class="memo-grid">
+    {% for memo in memos %}
+    <article class="memo-card">   
+        <h3>{{ memo.title }}</h3>
+        <p>{{ memo.content }}</p>
+        <div class="memo-footer">
+            <time datetime="{{ memo.date }}">
+                疑問日：{{ memo.date }}
+            </time>
+            <button type="button" class="edBtn">edit</button>
+            <button type="button" class="delBtn">delete</button>
+        </div>
+    </article>
+    {% else %}
+        <p class="empty-message">まだメモがありません。最初の疑問を投稿しよう！！</p>
+    {% endfor %}
+</section>
+
+
 <button id="Btn">Click!!</button>
 <button id="nextBtn">NEXT</button>
+
 {% endblock %}

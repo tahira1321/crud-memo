@@ -1,11 +1,3 @@
-// アラート表示
-const Btn = document.getElementById('Btn');
-if (Btn) {
-    Btn.addEventListener('click', function() {
-        alert('JavaScriptも動作中');
-    });
-}
-
 // 次へ
 const nextBtn = document.getElementById('nextBtn');
 if (nextBtn) {
@@ -21,4 +13,3 @@ if (prevBtn) {
         window.history.back();
     });
 }
-
