@@ -80,18 +80,17 @@ def edit_memo(memo_id):
         return redirect(url_for('main.index'))
 
     # Case GET
-    memo = models.get_memo_by_id(memo_id):
-        if not memo:
-            flash("対象のメモが見つかりません", "warning")
-            return ridirect(url_for('main.index')
+    memo = models.get_memo_by_id(memo_id)
+    if not memo:
+        flash("対象のメモが見つかりません", "warning")
+        return ridirect(url_for('main.index'))
 
 # --Delete
 @main.route('/delete/<int:memo_id>', methods=['GET', 'POST'])
 def delete_memo(memo_id):
-        from . import models
-        models.delete_memo(memo_id)
-
-        return redirect(url_for('main.index'))
+    from . import models
+    models.delete_memo(memo_id)
+    return redirect(url_for('main.index'))
 
 
 # ==================== 
