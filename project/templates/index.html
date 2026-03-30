@@ -6,28 +6,29 @@
 {% block content %}
 
 <!-- input form area -->
-<div>
-    <form action="" method="post" id="memo-form">
+<section class="form-container">
+    <form action="{{ url_for('main.index') }}" method="post" id="memo-form">
         <fieldset>
             <legend>新規メモ入力</legend>
+            <input type="hidden" name="category" id="current-category" value="question">
             <p>
                 <label for="title">タイトル</label>
-                <input type="text" id="title" name="why_title"  placeholder="テーマ">
+                <input type="text" id="title" name="title"  placeholder="テーマ">
             </p>
             <p>
                 <label for="content">内容</label>
-                <textarea id="content" name="why_content" placeholder="内容"></textarea>
+                <textarea id="content" name="content" placeholder="内容"></textarea>
             </p>
             <p>
-                <input type="date" name="create_date">
+                <input type="date" name="question_date" id="question_date">
             </p>
             <p>
-                <button type="button" id="cancelBtn" class="btn">キャンセル</button>
+            <button type="button" id="cancelBtn" class="btn">キャンセル</button>
                 <button type="submit">確定</button>
             </p>
         </fieldset>
     </form>
-</div>
+</section>
 
 <!-- desplay all -->
 <h1>メモ一覧</h1>
@@ -37,11 +38,13 @@
         <h3>{{ memo.title }}</h3>
         <p>{{ memo.content }}</p>
         <div class="memo-footer">
-            <time datetime="{{ memo.date }}">
-                疑問日：{{ memo.date }}
+            <time datetime="{{ memo.question_date }}">
+                疑問日：{{ memo.question_date }}
             </time>
-            <button type="button" class="edBtn">edit</button>
-            <button type="button" class="delBtn">delete</button>
+            <p>
+                <button type="button" class="edBtn" data-id="{{ memo.id }}">edit</button>
+                <button type="button" class="delBtn" data-id="{{ memo.id }}">delete</button>
+            </p>
         </div>
     </article>
     {% else %}

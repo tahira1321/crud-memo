@@ -2,9 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- title -->
     <title>
         {% block title %}Simple CRUD MEMO{% endblock %}
     </title>
+
+    <!-- css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block css %}{% endblock %}
 </head>
@@ -20,7 +25,7 @@
     <!-- insert footer -->
     {% include 'includes/_footer.html' %}
 
-    <!-- read JavaScript -->
+    <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
     <script src="{{ url_for('static', filename='js/navigation.js') }}"></script>
     <script src="{{ url_for('static', filename='js/form.js') }}"></script>
