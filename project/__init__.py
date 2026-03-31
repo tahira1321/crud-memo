@@ -5,7 +5,7 @@
 import os
 
 # Third-party Library:フレームワーク本体・pipでインストールした拡張機能など
-from flask import Flask
+from flask import Flask, render_template
 from dotenv import load_dotenv
 
 # Read .env:アプリ起動前に環境変数を確定
@@ -70,7 +70,7 @@ def register_error_handlers(app):
     # エラーハンドリングの具体的内容を記入
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('404.html'), 404
+        return render_template('errors/404.html'), 404
     pass
 
 def register_request_hooks(app):
