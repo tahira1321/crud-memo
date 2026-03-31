@@ -5,12 +5,12 @@
 * **一覧表示**: 投稿されたメモを日付順に閲覧
 * **新規作成**: タイトル、内容、日付を指定して保存
 * **編集機能**: 既存のメモをID指定で安全に上書き
-* **論理削除**: `status` カラムを用いた安全なデータ削除（404/500エラーページ完備）
+* **論理削除**: `status` カラムを用いた安全なデータ削除
 
 ## 2. 使用技術 (Tech Stack)
 * **Backend**: Python 3.9 / Flask (Blueprint 構成)
 * **Database**: MySQL / PyMySQL (Raw SQL)
-* **Infrastructure**: Docker / WSL2 / Ubuntu
+* **Infrastructure**: WSL2 / Ubuntu
 
 ## 3. 起動方法 (Setup)
 
@@ -23,21 +23,16 @@ cd crud-memo
 ```
 
 ### ② 仮想環境の構築とライブラリ導入
+MySQLにログインして実行する場合（パスワード入力が必要）
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install flask pymysql
+pip install -r requirements.txt
 ```
 
 ### ③ データベースの準備
 ```bash
-CREATE TABLE memos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL,
-    question_date DATE NOT NULL,
-    status VARCHAR(20) NOT NULL DEFAULT 'draft'
-);
+mysql -u your_user -p < init.sql
 ```
 
 ### ④ アプリの起動
