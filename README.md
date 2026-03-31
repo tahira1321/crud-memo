@@ -20,3 +20,27 @@
 ```bash
 git clone <your-repository-url>
 cd crud-memo
+```
+
+### ② 仮想環境の構築とライブラリ導入
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install flask pymysql
+```
+
+### ③ データベースの準備
+```bash
+CREATE TABLE memos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    question_date DATE NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'draft'
+);
+```
+
+### ④ アプリの起動
+```bash
+flask run
+```
